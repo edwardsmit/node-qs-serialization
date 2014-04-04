@@ -2,7 +2,7 @@
   "name": "node-qs-serialization",
   "version": "0.0.1",
   "description": "Serialization and deserialization of an URL its QueryString based on and compatible with jQuery's $.param method",
-  "main": "node-qs-serialization.js",
+  "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha test"
   },
