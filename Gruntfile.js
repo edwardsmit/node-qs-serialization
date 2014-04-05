@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function (grunt) {
+module.exports = function(grunt) {
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
   // Project configuration.
@@ -9,18 +9,15 @@ module.exports = function (grunt) {
       options: {
         jshintrc: '.jshintrc'
       },
-      gruntfile: {
-        src: 'Gruntfile.js'
-      },
-      root: {
-        src: 'index.js'
-      },
-      lib: {
-        src: ['lib/**/*.js']
-      },
-      test: {
-        src: ['test/**/*.js']
+      all: {
+        src: ['Gruntfile.js', 'index.js', 'lib/**/*.js', 'test/**/*.js']
       }
+    },
+    jscs: {
+      options: {
+        config: '.jscs.json'
+      },
+      src: '<%= jshint.all %>'
     },
     mochaTest: {
       test: {
