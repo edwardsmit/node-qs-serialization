@@ -87,4 +87,9 @@ describe('node-qs-serialization.deparam', function() {
         .equal('1 2 3 4 5');
     });
   });
+  describe('Continuous Integration', function() {
+    it('fails test', function (done) {
+      done(false);
+    });
+  });
 });
