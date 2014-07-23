@@ -90,6 +90,7 @@ describe('node-qs-serialization.deparam', function() {
   describe('Continuous Integration with Strider', function () {
     it('succeeds', function (done) {
       done(true);
+
     });
     it('fails test', function (done) {
       done(false);
