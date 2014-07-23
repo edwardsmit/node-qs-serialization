@@ -87,4 +87,13 @@ describe('node-qs-serialization.deparam', function() {
         .equal('1 2 3 4 5');
     });
   });
+  describe('Continuous Integration with Strider', function () {
+    it('succeeds', function (done) {
+      done(true);
+
+    });
+    it('fails test', function (done) {
+      done(false);
+    });
+  });
 });
