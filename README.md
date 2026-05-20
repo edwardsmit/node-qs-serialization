@@ -1,7 +1,9 @@
 node-qs-serialization
 ===================
-Serialization and deserialization of Javascript objects for use in the querystring part of an url without any external dependency.
+Serialization and deserialization of Javascript objects for use in the querystring part of an url.
 Slightly modified from jQuery's $.param function [$.param method](http://api.jquery.com/jQuery.param/) and Ben Alman's [jquery-bbq](https://github.com/cowboy/jquery-bbq/) with license info for both included.
+
+`deparam` delegates parsing to [`qs`](https://github.com/ljharb/qs) and adds an ISO-8859 percent-encoding fallback, type coercion, and per-parameter depth and prototype-key rejection on top. `param` is the original pure-JS jQuery-traditional serializer.
 
 param serializes any Javascript object to a valid querystring.
 deparam deserializes a provided querystring.
