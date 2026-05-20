@@ -1,6 +1,6 @@
 {
   "name": "node-qs-serialization",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Serialization and deserialization of an URL its QueryString based on and compatible with jQuery's $.param method",
   "main": "index.js",
   "files": [
@@ -36,13 +36,15 @@
   "author": "Edward Smit <edwardsmit@xs4all.nl>",
   "license": "MIT",
   "devDependencies": {
-    "mocha": "~1.12.0",
     "chai": "~1.7.2",
     "grunt": "^0.4.4",
-    "matchdep": "^0.3.0",
-    "grunt-mocha-test": "^0.10.0",
+    "grunt-contrib-jshint": "^0.10.0",
     "grunt-jscs-checker": "^0.4.1",
-    "grunt-contrib-jshint": "^0.10.0"
+    "grunt-mocha-test": "^0.10.0",
+    "matchdep": "^0.3.0",
+    "mocha": "~1.12.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "qs": "^6.15.2"
+  }
 }
