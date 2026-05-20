@@ -29,8 +29,10 @@ deparam(paramStr).should.deep.equal(paramsObj);
 Install
 ==============
 ```
-npm install git://github.com/edwardsmit/node-qs-serialization.git
+npm install node-qs-serialization
 ```
+
+(Or from source: `npm install github:edwardsmit/node-qs-serialization`.)
 
 Usage
 ===============
@@ -41,6 +43,15 @@ var paramsObj = deparam(querystring);
 var querystring = param(paramsObj);
 ```
 
+### `deparam(querystring, coerce = true, maxDepth = 5)`
+
+- `coerce` — when `true` (default), strings `"true"`, `"false"`, `"null"`, `"undefined"` and numeric values are converted to their JS equivalents.
+- `maxDepth` — caps nested bracket depth (default `5`). Parameters whose key path exceeds this depth are silently dropped. Keys equal to `__proto__`, `constructor`, or `prototype` are always rejected to prevent prototype pollution.
+
+Security
+===============
+See [SECURITY.md](./SECURITY.md) for disclosure policy.
+
 License
 ===============
-MIT
+MIT — see [LICENSE](./LICENSE) for full text including the attributions to jQuery and jquery-bbq from which `param` and `deparam` are adapted.

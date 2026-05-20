@@ -1,3 +1,5 @@
+The MIT License (MIT)
+
 Copyright 2014 Edward Smit and other contributors
 https://github.com/edwardsmit/
 
@@ -19,3 +21,21 @@ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
 LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+---
+
+Portions of this software are derived from:
+
+jQuery (`lib/param.js` is adapted from jQuery's `$.param`)
+Copyright 2014 jQuery Foundation and other contributors
+http://jquery.com/
+
+Licensed under the MIT License (text identical to the above).
+
+---
+
+jquery-bbq (`lib/deparam.js` is adapted from Ben Alman's jquery-bbq)
+Copyright (c) 2013 AceMetrix
+Copyright (c) 2010 "Cowboy" Ben Alman
+
+Licensed under the MIT License (text identical to the above).
