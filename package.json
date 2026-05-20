@@ -14,7 +14,10 @@
     "node": ">=0.10"
   },
   "scripts": {
-    "test": "mocha test",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "npm run lint && npm run format:check && mocha test",
     "test:smoke": "node test/smoke-floor.js",
     "test:floor": "docker run --rm --platform linux/amd64 -v \"$PWD\":/app -w /app node:4 sh -c 'node test/smoke-floor.js'"
   },
@@ -35,16 +38,14 @@
   ],
   "author": "Edward Smit <edwardsmit@xs4all.nl>",
   "license": "MIT",
-  "devDependencies": {
-    "chai": "~1.7.2",
-    "grunt": "^0.4.4",
-    "grunt-contrib-jshint": "^0.10.0",
-    "grunt-jscs-checker": "^0.4.1",
-    "grunt-mocha-test": "^0.10.0",
-    "matchdep": "^0.3.0",
-    "mocha": "~1.12.0"
-  },
   "dependencies": {
     "qs": "^6.15.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "chai": "^4.5.0",
+    "eslint": "^10.4.0",
+    "mocha": "^11.7.5",
+    "prettier": "^3.8.3"
   }
 }
