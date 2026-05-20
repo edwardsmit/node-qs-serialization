@@ -7,6 +7,18 @@ on:
     branches: [main]
 
 jobs:
+  lint:
+    name: Lint + format
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-audit --no-fund
+      - run: npm run lint
+      - run: npm run format:check
+
   test:
     name: Node ${{ matrix.node }}
     runs-on: ubuntu-latest
@@ -19,8 +31,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
-      - run: npm install --legacy-peer-deps --no-audit --no-fund
-      - run: node ./node_modules/mocha/bin/_mocha test
+      - run: npm install --no-audit --no-fund
+      - run: npx mocha test
       - run: node test/smoke-floor.js
 
   test-qs-latest:
@@ -31,9 +43,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: npm install --legacy-peer-deps --no-audit --no-fund
+      - run: npm install --no-audit --no-fund
       - run: npm install --no-save qs@latest
-      - run: node ./node_modules/mocha/bin/_mocha test/conformance.spec.js
+      - run: npx mocha test/conformance.spec.js
 
   floor:
     name: Engines floor (Node ${{ matrix.node }} via Docker)
@@ -60,4 +72,4 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: npm audit --omit=dev || echo "audit reports issues; review required"
+      - run: npm audit --omit=dev
