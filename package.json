@@ -1,15 +1,31 @@
 {
   "name": "node-qs-serialization",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "Serialization and deserialization of an URL its QueryString based on and compatible with jQuery's $.param method",
   "main": "index.js",
+  "files": [
+    "index.js",
+    "lib",
+    "LICENSE",
+    "README.md",
+    "SECURITY.md"
+  ],
+  "engines": {
+    "node": ">=0.10"
+  },
   "scripts": {
-    "test": "./node_modules/.bin/mocha test"
+    "test": "mocha test",
+    "test:smoke": "node test/smoke-floor.js",
+    "test:floor": "docker run --rm --platform linux/amd64 -v \"$PWD\":/app -w /app node:4 sh -c 'node test/smoke-floor.js'"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/edwardsmit/node-qs-serialization.git"
   },
+  "bugs": {
+    "url": "https://github.com/edwardsmit/node-qs-serialization/issues"
+  },
+  "homepage": "https://github.com/edwardsmit/node-qs-serialization",
   "keywords": [
     "nodejs",
     "jquery",
@@ -19,7 +35,6 @@
   ],
   "author": "Edward Smit <edwardsmit@xs4all.nl>",
   "license": "MIT",
-  "readmeFilename": "README.md",
   "devDependencies": {
     "mocha": "~1.12.0",
     "chai": "~1.7.2",
