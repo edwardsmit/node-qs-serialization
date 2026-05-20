@@ -42,14 +42,7 @@ module.exports = [
   {
     files: ['test/**/*.js'],
     languageOptions: {
-      globals: {
-        describe: 'readonly',
-        it: 'readonly',
-        before: 'readonly',
-        after: 'readonly',
-        beforeEach: 'readonly',
-        afterEach: 'readonly'
-      }
+      ecmaVersion: 2022
     }
   },
   {
