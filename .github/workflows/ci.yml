@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  test:
+    name: Node ${{ matrix.node }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['18', '20', '22', '24']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm install --legacy-peer-deps --no-audit --no-fund
+      - run: node ./node_modules/mocha/bin/_mocha test
+      - run: node test/smoke-floor.js
+
+  floor:
+    name: Engines floor (Node ${{ matrix.node }} via Docker)
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['0.10', '0.12', '4', '6', '8', '10', '12', '14', '16']
+    steps:
+      - uses: actions/checkout@v4
+      - name: Smoke test on Node ${{ matrix.node }}
+        run: docker run --rm -v "$PWD":/app -w /app node:${{ matrix.node }} sh -c 'node test/smoke-floor.js'
+
+  audit:
+    name: npm audit (runtime only)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm audit --omit=dev || echo "audit reports issues; review required"
