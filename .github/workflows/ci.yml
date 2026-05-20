@@ -32,7 +32,7 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
       - run: npm install --no-audit --no-fund
-      - run: npx mocha test
+      - run: node --test test/*.spec.js
       - run: node test/smoke-floor.js
 
   test-qs-latest:
@@ -45,7 +45,7 @@ jobs:
           node-version: '22'
       - run: npm install --no-audit --no-fund
       - run: npm install --no-save qs@latest
-      - run: npx mocha test/conformance.spec.js
+      - run: node --test test/conformance.spec.js
 
   floor:
     name: Engines floor (Node ${{ matrix.node }} via Docker)

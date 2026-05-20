@@ -1,48 +1,49 @@
 'use strict';
 
-require('chai').should();
+const { describe, it } = require('node:test');
+const assert = require('node:assert/strict');
 
-var qss = require('../index.js');
-var param = qss.param;
-var deparam = qss.deparam;
+const qss = require('../index.js');
+const param = qss.param;
+const deparam = qss.deparam;
 
 function readableParam(s) {
   return decodeURIComponent(param(s));
 }
 
-describe('node-qs-serialization.param', function () {
-  it('loads', function () {
-    param.should.be.a('function');
+describe('node-qs-serialization.param', () => {
+  it('loads', () => {
+    assert.equal(typeof param, 'function');
   });
-  it('serializes strings', function () {
-    param({ prop: 'sillystring' }).should.equal('prop=sillystring');
-    deparam(param({ prop: 'sillystring' })).should.deep.equal({ prop: 'sillystring' });
+  it('serializes strings', () => {
+    assert.equal(param({ prop: 'sillystring' }), 'prop=sillystring');
+    assert.deepEqual(deparam(param({ prop: 'sillystring' })), { prop: 'sillystring' });
   });
-  it('serializes arrays', function () {
-    readableParam({ prop: ['one', 'two'] }).should.equal('prop[]=one&prop[]=two');
-    deparam(param({ prop: ['one', 'two'] })).should.deep.equal({ prop: ['one', 'two'] });
+  it('serializes arrays', () => {
+    assert.equal(readableParam({ prop: ['one', 'two'] }), 'prop[]=one&prop[]=two');
+    assert.deepEqual(deparam(param({ prop: ['one', 'two'] })), { prop: ['one', 'two'] });
   });
-  it('serializes objects', function () {
-    readableParam({ prop: { prop2: 'somestring' } }).should.equal('prop[prop2]=somestring');
-    deparam(readableParam({ prop: { prop2: 'somestring' } })).should.deep.equal({
+  it('serializes objects', () => {
+    assert.equal(readableParam({ prop: { prop2: 'somestring' } }), 'prop[prop2]=somestring');
+    assert.deepEqual(deparam(readableParam({ prop: { prop2: 'somestring' } })), {
       prop: { prop2: 'somestring' }
     });
   });
-  it('serializes booleans', function () {
-    param({ prop: false }).should.equal('prop=false');
-    deparam(param({ prop: false })).should.deep.equal({ prop: false });
+  it('serializes booleans', () => {
+    assert.equal(param({ prop: false }), 'prop=false');
+    assert.deepEqual(deparam(param({ prop: false })), { prop: false });
   });
-  it('serializes numbers', function () {
-    param({ prop: 1234 }).should.equal('prop=1234');
-    deparam(param({ prop: 1234 })).should.deep.equal({ prop: 1234 });
+  it('serializes numbers', () => {
+    assert.equal(param({ prop: 1234 }), 'prop=1234');
+    assert.deepEqual(deparam(param({ prop: 1234 })), { prop: 1234 });
   });
-  it('returns an empty object when no parameter provided', function () {
-    param().should.be.empty;
+  it('returns an empty string when no parameter provided', () => {
+    assert.equal(param(), '');
   });
-  describe('Should work correctly with encoded characters', function () {
-    it('serializes and encodes accented characters', function () {
-      param({ prop: 't\xe9l\xe9 club ' }).should.equal('prop=t%C3%A9l%C3%A9+club+');
-      deparam(param({ prop: 't\xe9l\xe9 club ' })).should.deep.equal({ prop: 't\xe9l\xe9 club ' });
+  describe('Should work correctly with encoded characters', () => {
+    it('serializes and encodes accented characters', () => {
+      assert.equal(param({ prop: 't\xe9l\xe9 club ' }), 'prop=t%C3%A9l%C3%A9+club+');
+      assert.deepEqual(deparam(param({ prop: 't\xe9l\xe9 club ' })), { prop: 't\xe9l\xe9 club ' });
     });
   });
 });
