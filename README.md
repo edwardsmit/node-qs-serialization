@@ -1,9 +1,10 @@
 # node-qs-serialization
 
 Serialization and deserialization of Javascript objects for use in the querystring part of an url.
-Slightly modified from jQuery's $.param function [$.param method](http://api.jquery.com/jQuery.param/) and Ben Alman's [jquery-bbq](https://github.com/cowboy/jquery-bbq/) with license info for both included.
 
-`deparam` delegates parsing to [`qs`](https://github.com/ljharb/qs) and adds an ISO-8859 percent-encoding fallback, type coercion, and per-parameter depth and prototype-key rejection on top. `param` is the original pure-JS jQuery-traditional serializer.
+`param` is adapted from jQuery's [`$.param`](http://api.jquery.com/jQuery.param/) — the original pure-JS jQuery-traditional serializer, unchanged since 2014.
+
+`deparam` is an original shim over [`qs`](https://github.com/ljharb/qs) whose behavioral contract was originally derived from Ben Alman's [jquery-bbq](https://github.com/cowboy/jquery-bbq/) — same coercion conventions, same test fixtures, same ISO-8859 percent-encoding fallback. The code was rewritten in v1.1.0; the contract was preserved.
 
 param serializes any Javascript object to a valid querystring.
 deparam deserializes a provided querystring.
@@ -56,4 +57,4 @@ See [SECURITY.md](./SECURITY.md) for disclosure policy.
 
 # License
 
-MIT — see [LICENSE](./LICENSE) for full text including the attributions to jQuery and jquery-bbq from which `param` and `deparam` are adapted.
+MIT — see [LICENSE](./LICENSE) for full text including the attributions to jQuery (from which `param` is adapted) and jquery-bbq (whose behavioral conventions `deparam` preserves).

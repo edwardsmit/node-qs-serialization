@@ -34,7 +34,9 @@ Licensed under the MIT License (text identical to the above).
 
 ---
 
-jquery-bbq (`lib/deparam.js` is adapted from Ben Alman's jquery-bbq)
+jquery-bbq (the original `lib/deparam.js`, replaced in v1.1.0 by an
+original shim over qs that preserves jquery-bbq's behavioral conventions
+and test fixtures)
 Copyright (c) 2013 AceMetrix
 Copyright (c) 2010 "Cowboy" Ben Alman
 
